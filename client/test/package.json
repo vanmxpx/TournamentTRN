@@ -1,0 +1,49 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder --linux",
+    "build": "tsc",
+    "postinstall": "electron-builder install-app-deps",
+    "electron": "npm run build && electron ./dist/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "linux:pack": "electron-installer-debian --src dist/app-linux-x64/ --dest dist/installers/ --arch amd64",
+    "package-linux": "electron-packager . app --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/1024x1024.png --prune=true --out=release-builds"
+  },
+  "homepage": "tst",
+  "author": {
+    "name": "tst",
+    "email": "tst"
+  },
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^4.0.0",
+    "electron-builder": "^20.38.4",
+    "electron-packager": "^13.0.1",
+    "tslint": "^5.12.0",
+    "typescript": "^3.2.2"
+  },
+  "build": {
+    "directories": {
+      "buildResources": "dist/*",
+      "output": "distElectron"
+    },
+    "appId": "teeeeeee",
+    "mac": {
+      "category": "your.app.category.type"
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ]
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    }
+  }
+}
